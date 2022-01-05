@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "full_name": "Naveed Dude",
+    "email": "nf@example.com",
+    "phone_number": "12345678901",
+    "tags": "work"
+  },
+  {
+    "id": 2,
+    "full_name": "Victor Reyes",
+    "email": "vpr@example.com",
+    "phone_number": "09876543210",
+    "tags": ""
+  },
+  {
+    "id": 3,
+    "full_name": "Pete Hanson",
+    "email": "ph@example.com",
+    "phone_number": "54321098761",
+    "tags": null
+  },
+  {
+    "full_name": "Dyani Frye",
+    "phone_number": "111-222-3333",
+    "email": "dyani@dasani.com",
+    "tags": "work",
+    "id": 6
+  },
+  {
+    "full_name": "Steve Gontzes",
+    "phone_number": "111-222-3333",
+    "email": "steve@stevieboy.com",
+    "tags": "work,friend",
+    "id": 8
+  }
+]

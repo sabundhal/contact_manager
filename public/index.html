@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Manager</title>
+    <script src="./javascripts/jquery.js"></script>
+    <script src="./javascripts/handlebars.js"></script>
+    <script src="./javascripts/app.js" charset="utf-8"></script>
+    <style>
+      div.contact {
+        display: inline-block;
+        margin: 30px;
+        border-color: black;
+        border-width: 5px;
+        height: 100px;
+      }
+
+      div.hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Contact Manager</h1>
+    </header>
+    <main>
+      <header >
+        <button type="button" name="add">Add Contact</button>
+        <input type="text" name="search" value="" placeholder="Search"><br>
+        <form id="create_tag">
+          <input type="text" name="tag" value="">
+          <button type="submit" name="submit_tag">Create Tag</button>
+        </form>
+        <div id="tags">
+          <h3>Filter by Tag</h3>
+          <button>Reset Filter</button>
+        </div>
+      </header>
+
+      <div  id="contacts">
+
+      </div>
+
+      <div class="hidden" id="add_contact">
+        <h2>Create Contact</h2>
+        <form class="add" action="/api/contacts/" method="POST">
+          <fieldset>
+            <label for="full_name">Full name:</label>
+            <input type="text" name="full_name" value="" required>
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" pattern="^.+@.+\..{2,}$" value="" placeholder="example@domain.com">
+            <label for="phone_number">Telephone number:</label>
+            <input type="text" name="phone_number" value="" placeholder="111-222-3333">
+            <label for="tags">Tags:</label>
+            <select name="tags" multiple>
+              <option value="none">none</option>
+            </select>
+            <button type="submit" name="submit">Submit</button>
+            <button type="button" name="cancel">Cancel</button>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="hidden" id="edit_contact">
+      </div>
+    </main>
+    <script type="text/x-handlebars" id="contact_template">
+      <div data-id={{ id }} class="contact">
+        <h2>{{ full_name }}</h2>
+        <p><strong>Phone Number:</strong></p>
+        <p>{{ phone_number }}</p>
+        <p><strong>Email:</strong></p>
+        <p>{{ email }}</p>
+        <p><strong>Tags:</strong></p>
+        <p class="contact_tags">{{ tags }}</p>
+        <button type="button" name="edit">Edit</button>
+        <button type="button" name="delete">Delete</button>
+      </div>
+    </script>
+    <script type="text/x-handlebars" id="edit_contact_template">
+      <h2>Edit Contact</h2>
+      <form>
+        <fieldset>
+          <input type="hidden" name="id" value={{ id }}>
+          <label for="full_name">Full name:</label>
+          <input type="text" name="full_name" value="{{full_name}}">
+          <label for="email">Email Address:</label>
+          <input type="email" name="email" pattern="^.+@.+\..{2,}$" value="{{ email }}">
+          <label for="phone_number">Telephone number:</label>
+          <input type="text" name="phone_number" value="{{ phone_number }}">
+          <label for="tags">Tags:</label>
+          <select name="tags" multiple>
+          </select>
+          <button type="submit" name="submit">Submit</button>
+          <button type="button" name="cancel">Cancel</button>
+        </fieldset>
+      </form>
+    </script>
+  </body>
+</html>
